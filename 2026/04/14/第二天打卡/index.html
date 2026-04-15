@@ -6,15 +6,15 @@
   
   <title>第二天打卡-双指针 | 标题</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="题目相关链接LeetCode题目链接哔哩哔哩视频讲解链接 LeetCode题目 题目要求 : 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素。元素的顺序可能发生改变。然后返回nums中与val不同的元素的数量。   思路 : 使用双指针    变量定义 :   index : 表示慢指针  123456789class Solution &#123;    pu">
+  <meta name="description" content="题目相关链接LeetCode题目链接哔哩哔哩视频讲解链接 LeetCode题目 题目要求 : 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素。元素的顺序可能发生改变。然后返回nums中与val不同的元素的数量。   思路 : 使用双指针   变量定义 :   index : 表示慢指针  123456789class Solution &#123;    pub">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第二天打卡-双指针">
 <meta property="og:url" content="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/index.html">
 <meta property="og:site_name" content="标题">
-<meta property="og:description" content="题目相关链接LeetCode题目链接哔哩哔哩视频讲解链接 LeetCode题目 题目要求 : 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素。元素的顺序可能发生改变。然后返回nums中与val不同的元素的数量。   思路 : 使用双指针    变量定义 :   index : 表示慢指针  123456789class Solution &#123;    pu">
+<meta property="og:description" content="题目相关链接LeetCode题目链接哔哩哔哩视频讲解链接 LeetCode题目 题目要求 : 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素。元素的顺序可能发生改变。然后返回nums中与val不同的元素的数量。   思路 : 使用双指针   变量定义 :   index : 表示慢指针  123456789class Solution &#123;    pub">
 <meta property="og:locale">
 <meta property="article:published_time" content="2026-04-14T04:57:08.596Z">
-<meta property="article:modified_time" content="2026-04-14T05:08:07.026Z">
+<meta property="article:modified_time" content="2026-04-15T10:09:03.756Z">
 <meta property="article:author" content="站主">
 <meta property="article:tag" content="关键词">
 <meta name="twitter:card" content="summary">
@@ -66,12 +66,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -104,17 +104,14 @@
 <h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
 <li><em><strong>题目要求 :</strong></em> 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素。元素的顺序可能发生改变。然后返回nums中与val不同的元素的数量。  </li>
 <li><em><strong>思路 :</strong></em> 使用双指针  </li>
-<li><ul>
-<li><em><strong>变量定义 :</strong></em></li>
-</ul>
-</li>
+<li><em><strong>变量定义 :</strong></em>  </li>
 <li>index : 表示慢指针</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> index=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            nums[index++]=nums[i]!=val?nums[i]:--index;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -124,9 +121,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          第三天打卡 - 滑动窗口
+        
+      </div>
+    </a>
+  
   
     <a href="/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Viejo</strong>
       <div class="article-nav-title">第一天打卡 - 二分查找</div>
     </a>
   
@@ -150,7 +156,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
     </div>
@@ -160,9 +166,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/">第三天打卡 - 滑动窗口</a>
+          </li>
         
           <li>
             <a href="/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/">第二天打卡-双指针</a>
@@ -194,7 +204,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2026 站主<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

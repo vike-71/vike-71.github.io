@@ -64,12 +64,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -77,6 +77,65 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-第三天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-15T09:34:26.119Z" itemprop="datePublished">2026-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/">第三天打卡 - 滑动窗口</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tZ4y1q7XE">哔哩哔哩视频讲解链接</a></p>
+<h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
+<li><em><strong>题目要求 :</strong></em> 给定一个含有n个正整数的数组和一个正整数 target ,找出该数组中满足其总和大于等于 target 的长度最小的 子数组[numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。 </li>
+<li><em><strong>题目分析 :</strong></em>   </li>
+<li>数组的范围和累加和具有单调性关系: 范围越大,累加和越大;范围越小,累加和越小.    </li>
+<li>所以可以使用滑动窗口来解决这个问题.</li>
+</ul>
+<h2 id="使用滑动窗口解题-求子数组在每个位置-结尾-情况下的答案"><a href="#使用滑动窗口解题-求子数组在每个位置-结尾-情况下的答案" class="headerlink" title="使用滑动窗口解题(求子数组在每个位置 结尾 情况下的答案)"></a>使用滑动窗口解题(求子数组在每个位置 结尾 情况下的答案)</h2><ul>
+<li><em><strong>变量定义 :</strong></em>  </li>
+<li>index : 表示满足条件的子数组的最小长度  </li>
+<li>l : 表示滑动窗口的左边界  </li>
+<li>r : 表示滑动窗口的右边界  </li>
+<li>sum : 表示滑动窗口内元素的总和  </li>
+<li><em><strong>思路 :</strong></em>   </li>
+<li>index 初始赋值为整数的最大值,表示最开始没有找到满足条件的子数组 <code>int index = Integer.MAX_VALUE;</code>  </li>
+<li>sum 初始赋值为0,表示滑动窗口最开始内元素的总和为0 <code>int sum = 0;</code>  </li>
+<li><code>sum+=nums[r];</code>和for循环中的<code>r++;</code> 表示每次循环都将右边界向右移动一位,并将新加入滑动窗口的元素值加到sum上  </li>
+<li><code>sum-=nums[l++];</code>和while循环的循环条件<code>sum-nums[l]&gt;=target</code> 表示当滑动窗口内元素的总和减去左边界的元素值仍然大于等于target时,就将左边界向右移动一位,并将移出滑动窗口的元素值从sum中减去,用于求出结尾以r位置为右边界的满足条件的子数组的最小长度的情况  </li>
+<li>如果 ‘sum&gt;&#x3D;target’ ,说明当前滑动窗口内元素的总和已经满足条件了,就更新index的值为当前滑动窗口的长度和之前index值的较小值 <code>index = Math.min(index, r - l + 1);</code>  </li>
+<li>最后返回index的值,如果index仍然是整数的最大值,说明没有找到满足条件的子数组,就返回0,否则返回index的值 <code>return index==Integer.MAX_VALUE?0:index;</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>, r = <span class="number">0</span>, sum = <span class="number">0</span>; r &lt; nums.length; r++) &#123;</span><br><span class="line">                sum += nums[r];</span><br><span class="line">                    <span class="keyword">while</span>(sum-nums[l]&gt;=target)&#123;</span><br><span class="line">                        sum-=nums[l++];</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="keyword">if</span> (sum &gt;= target) &#123;</span><br><span class="line">                    index = Math.min(index, r - l + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> index==Integer.MAX_VALUE?<span class="number">0</span>:index;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidwnFxh0OkH2rXoR9hMp_Pa" data-title="第三天打卡 - 滑动窗口" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-第二天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -104,17 +163,14 @@
 <h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
 <li><em><strong>题目要求 :</strong></em> 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素。元素的顺序可能发生改变。然后返回nums中与val不同的元素的数量。  </li>
 <li><em><strong>思路 :</strong></em> 使用双指针  </li>
-<li><ul>
-<li><em><strong>变量定义 :</strong></em></li>
-</ul>
-</li>
+<li><em><strong>变量定义 :</strong></em>  </li>
 <li>index : 表示慢指针</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> index=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            nums[index++]=nums[i]!=val?nums[i]:--index;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -184,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidmWWgt4xMpMXZcTbWdCsZh" data-title="第一天打卡 - 二分查找" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidmWWgt4xMpMXZcTbWdCsZh" data-title="第一天打卡 - 二分查找" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -259,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-id="cuidZwDX_g7fNKHdR0nzwREXH" data-title="markdown基础语法" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-id="cuidZwDX_g7fNKHdR0nzwREXH" data-title="markdown基础语法" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -310,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/12/hello-world/" data-id="cuidL3VNULs-1hNtPV4MQIQGX" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/12/hello-world/" data-id="cuidL3VNULs-1hNtPV4MQIQGX" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -338,7 +394,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
     </div>
@@ -348,9 +404,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/">第三天打卡 - 滑动窗口</a>
+          </li>
         
           <li>
             <a href="/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/">第二天打卡-双指针</a>
@@ -382,7 +442,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2026 站主<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
