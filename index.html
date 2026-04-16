@@ -108,9 +108,9 @@
 <li>cnt : 表示当前已经填充的元素个数  </li>
 <li><em><strong>解题思路 :</strong></em>  </li>
 <li>因为是一个n x n的正方形矩阵,所以第一圈的起始位置从0开始,每圈的起始位置都比上一圈大1,所以start初始值为0,每圈结束后start加1 <code>int start= 0;</code>  </li>
-<li>因为数是从1开始的,所以cnt初始值为1,每填充一个元素cnt加1 <code>int cnt=1;</code>  </li>
+<li>因为数是从1开始的,所以cnt初始值为1 <code>int cnt=1;</code>  </li>
 <li>因为是一个n x n的正方形矩阵,所以会有n&#x2F;2圈,所以当start小于n&#x2F;2时,说明还没有填充完,所以循环条件为 <code>while(start&lt;(n/2))</code>  </li>
-<li>每圈的填充顺序是从左到右,从上到下,从右到左,从下到上,所以每层的填充顺序为:  <ul>
+<li>每圈的填充顺序是从左到右,从上到下,从右到左,从下到上,且,每填充一个元素cnt加1所以每层的填充顺序为:  <ul>
 <li>从左到右填充: <code>for (int i=start;i&lt;n-start-1;i++){ matrix[start][i]=cnt++; }</code>  </li>
 <li>从上到下填充: <code>for (int i=start;i&lt;n-start-1;i++){ matrix[i][n-start-1]=cnt++; }</code>  </li>
 <li>从右到左填充: <code>for (int i=n-start-1;i&gt;start;i--){ matrix[n-start-1][i]=cnt++; }</code>  </li>
