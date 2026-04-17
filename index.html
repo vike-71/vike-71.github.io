@@ -66,10 +66,10 @@
         
           <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -77,6 +77,61 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-第五天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-17T07:40:35.304Z" itemprop="datePublished">2026-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第五天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-linked-list-elements/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18B4y1s7R9">哔哩哔哩视频讲解链接</a></p>
+<h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
+<li><em><strong>题目要求 :</strong></em> 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点，并返回 新的头节点 。  </li>
+<li><em><strong>思路 :</strong></em> 使用虚拟头节点  </li>
+<li><em><strong>变量定义 :</strong></em></li>
+<li>dummyHead : 表示虚拟头节点  </li>
+<li>cur : 表示当前节点  </li>
+<li><em><strong>解题思路 :</strong></em>  </li>
+<li>因为要删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点,所以需要一个虚拟头节点来处理头节点被删除的情况,所以dummyHead初始值为一个新的节点,且该节点的next指向head <code>ListNode dummyHead = new ListNode(-1,head);</code>  </li>
+<li>因为需要遍历链表来删除满足条件的节点,所以cur初始值为虚拟头节点 <code>ListNode cur = dummyHead;</code>  </li>
+<li>当cur的下一个节点不为空时,说明还有节点需要判断,所以循环条件为 <code>while(cur.next!=null)</code>  <ul>
+<li>如果cur的下一个节点的值等于val,说明需要删除该节点,所以将cur的下一个节点指向下一个节点的下一个节点 <code>cur.next = cur.next.next;</code>  </li>
+<li>如果cur的下一个节点的值不等于val,说明不需要删除该节点,所以将cur指向下一个节点 <code>cur = cur.next;</code>  </li>
+<li>最后返回虚拟头节点的下一个节点,即新的头节点 <code>return dummyHead.next;</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeElements</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>,head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(cur.next!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (cur.next.val == val)&#123;</span><br><span class="line">                cur.next = cur.next.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidJYoT2VdaWi3UYke_LfrYK" data-title="第五天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-第四天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -124,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuide1fFRnyz90hjs8ppp00my" data-title="第四天打卡" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuide1fFRnyz90hjs8ppp00my" data-title="第四天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -183,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidwnFxh0OkH2rXoR9hMp_Pa" data-title="第三天打卡 - 滑动窗口" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidwnFxh0OkH2rXoR9hMp_Pa" data-title="第三天打卡 - 滑动窗口" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -228,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -298,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidmWWgt4xMpMXZcTbWdCsZh" data-title="第一天打卡 - 二分查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidmWWgt4xMpMXZcTbWdCsZh" data-title="第一天打卡 - 二分查找" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -373,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-id="cuidZwDX_g7fNKHdR0nzwREXH" data-title="markdown基础语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-id="cuidZwDX_g7fNKHdR0nzwREXH" data-title="markdown基础语法" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -424,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/12/hello-world/" data-id="cuidL3VNULs-1hNtPV4MQIQGX" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/12/hello-world/" data-id="cuidL3VNULs-1hNtPV4MQIQGX" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -452,7 +507,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
     </div>
@@ -462,9 +517,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第五天打卡</a>
+          </li>
         
           <li>
             <a href="/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/">第四天打卡</a>
@@ -480,10 +539,6 @@
         
           <li>
             <a href="/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/">第一天打卡 - 二分查找</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">markdown基础语法</a>
           </li>
         
       </ul>
