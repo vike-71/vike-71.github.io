@@ -78,6 +78,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-第八天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-20T04:13:37.047Z" itemprop="datePublished">2026-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/">第八天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-sorted-array/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Gr16B2EGf/">哔哩哔哩视频讲解链接</a></p>
+<h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
+<li><em><strong>题目要求 :</strong></em> 给你两个按 非递减顺序 排列的整数数组nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。  </li>
+<li><em><strong>解题思路 :</strong></em>   <ul>
+<li>因为给你两个按 非递减顺序 排列的整数数组nums1 和 nums2,相当于归并排序中已经拍好的左部分和右部分,所以我先想到的是用归并排序中merge的过程来将两个数组合并</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用归并排序中merge的过程来将两个数组合并"><a href="#使用归并排序中merge的过程来将两个数组合并" class="headerlink" title="使用归并排序中merge的过程来将两个数组合并"></a>使用归并排序中merge的过程来将两个数组合并</h2><ul>
+<li><em><strong>变量定义 :</strong></em>  </li>
+<li>index1 : 表示nums1数组中有值的索引位置  </li>
+<li>index2 : 表示nums2数组的索引位置  </li>
+<li>i : 表示辅助数组nums3的索引位置  </li>
+<li>nums3 : 表示辅助数组,用来存储合并后的结果  </li>
+<li><em><strong>思路 :</strong></em>  </li>
+<li>因为nums1数组中有值的索引位置为0到m-1,所以index1初始值为0,当index1小于m时说明nums1数组中还有值 </li>
+<li>因为nums2数组的索引位置为0到n-1,所以index2初始值为0,当index2小于n时说明nums2数组中还有值,所以循环条件为 <code>while (index1 &lt; m &amp;&amp; index2 &lt; n)</code>  </li>
+<li>因为nums1数组和nums2数组都是按 非递减顺序 排列的,所以每次比较nums1数组中index1位置的值和nums2数组中index2位置的值,将较小的值添加到辅助数组nums3中,并且将对应的索引位置加1,所以 <code>nums3[i++] = nums1[index1] &lt; nums2[index2] ? nums1[index1++] : nums2[index2++];</code>  </li>
+<li>当右部分索引越界后,将左部分中剩余的元素全部添加到辅助数组nums3中<code>while (index1 &lt; m) { nums3[i++] = nums1[index1++]; }</code>  </li>
+<li>当左部分索引越界后,将右部分中剩余的元素全部添加到辅助数组nums3中<code>while (index2 &lt; n) { nums3[i++] = nums2[index2++]; }</code>  </li>
+<li>将辅助数组nums3中的元素全部添加到nums1数组中<code>for (i = 0; i &lt; m + n; i++) { nums1[i] = nums3[i]; }</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">            <span class="type">int</span>[] nums3 = <span class="keyword">new</span> <span class="title class_">int</span>[m + n];</span><br><span class="line">            <span class="type">int</span> <span class="variable">index1</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">index2</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (index1 &lt; m &amp;&amp; index2 &lt; n) &#123;</span><br><span class="line">                nums3[i++] = nums1[index1] &lt; nums2[index2] ? nums1[index1++] : nums2[index2++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (index1 &lt; m) &#123;</span><br><span class="line">                nums3[i++] = nums1[index1++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (index2 &lt; n) &#123;</span><br><span class="line">                nums3[i++] = nums2[index2++];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m + n; i++) &#123;</span><br><span class="line">                nums1[i] = nums3[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用视频中的解法"><a href="#使用视频中的解法" class="headerlink" title="使用视频中的解法"></a>使用视频中的解法</h2><ul>
+<li><em><strong>变量定义 :</strong></em>  </li>
+<li>index1 : 表示nums1数组中有值的从尾部开始的索引位置  </li>
+<li>index2 : 表示nums2数组的从尾部开始的索引位置  </li>
+<li>i : 表示nums1数组的从尾部开始的索引位置  </li>
+<li><em><strong>思路 :</strong></em>  </li>
+<li>因为nums1数组中有值的索引位置为0到m-1,所以index1初始值为m-1,当index1大于等于0时说明nums1数组中还有值  </li>
+<li>因为nums2数组的索引位置为0到n-1,所以index2初始值为n-1,当index2大于等于0时说明nums2数组中还有值,所以循环条件为 <code>while (index1 &gt;= 0 &amp;&amp; index2 &gt;= 0)</code>  </li>
+<li>因为nums1数组和nums2数组都是按 非递减顺序 排列的,所以每次比较nums1数组中index1位置的值和nums2数组中index2位置的值,将较大的值添加到nums1数组中的i位置,并且将对应的索引位置减1,所以 <code>nums1[i--] = nums1[index1] &lt; nums2[index2] ? nums2[index2--] : nums1[index1--];</code>  </li>
+<li>当左部分索引越界后,将右部分中剩余的元素全部添加到nums1数组中<code>while (index2 &gt;= 0) { nums1[i--] = nums2[index2--]; }</code></li>
+<li>因为当右部分索引越界后,左部分中剩余的元素已经在nums1数组中了,所以不需要再进行操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">index1</span> <span class="operator">=</span> m - <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">index2</span> <span class="operator">=</span> n - <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> m + n - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (index1 &gt;= <span class="number">0</span> &amp;&amp; index2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                nums1[i--] = nums1[index1] &lt; nums2[index2] ? nums2[index2--] : nums1[index1--];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (index2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                nums1[i--] = nums2[index2--];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidCT2P_IzRiuHMXt1WwzLlD" data-title="第八天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-第七天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
@@ -641,6 +714,10 @@
       <ul>
         
           <li>
+            <a href="/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/">第八天打卡</a>
+          </li>
+        
+          <li>
             <a href="/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/">第七天打卡</a>
           </li>
         
@@ -654,10 +731,6 @@
         
           <li>
             <a href="/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/">第四天打卡</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/">第三天打卡 - 滑动窗口</a>
           </li>
         
       </ul>
