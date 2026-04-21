@@ -78,6 +78,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-第九天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-21T05:31:17.569Z" itemprop="datePublished">2026-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/">第九天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/">LeetCode 题目链接</a>  </li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vkNGehEun/">哔哩哔哩视频讲解链接</a></li>
+</ul>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><em><strong>题目要求 :</strong></em><br>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出和为目标值 <code>target</code> 的那两个整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。<br>你可以按任意顺序返回答案。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p><strong>输入：</strong> nums &#x3D; [2,7,11,15], target &#x3D; 9<br><strong>输出：</strong> [0,1]<br><strong>解释：</strong> 因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，我们返回 [0, 1] 。</p>
+<p><strong>输入：</strong> nums &#x3D; [3,2,4], target &#x3D; 6<br><strong>输出：</strong> [1,2]</p>
+<p><strong>输入：</strong> nums &#x3D; [3,3], target &#x3D; 6<br><strong>输出：</strong> [0,1]</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这个问题可以使用哈希表来高效解决。基本思路是：</p>
+<ol>
+<li>创建一个哈希表，用于存储数组元素及其对应的下标。</li>
+<li>遍历数组，对于每个元素 <code>nums[i]</code>，计算其补数 <code>complement = target - nums[i]</code>。</li>
+<li>检查哈希表中是否已经存在这个补数，如果存在且不是当前元素本身（避免同一个元素使用两次），则返回这两个下标。</li>
+<li>如果不存在，将当前元素及其下标存入哈希表。</li>
+</ol>
+<p>这种方法的时间复杂度为 O(n)，比暴力枚举的 O(n²) 更高效。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">complement</span> <span class="operator">=</span> target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">                res[<span class="number">0</span>] = map.get(complement);</span><br><span class="line">                res[<span class="number">1</span>] = i;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid4wGn4z7gmW3t_fMGS-0yQ" data-title="第九天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-第八天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
@@ -632,58 +690,12 @@
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/12/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2026-04-12T14:39:06.615Z" itemprop="datePublished">2026-04-12</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/12/hello-world/" data-id="cuidL3VNULs-1hNtPV4MQIQGX" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
 
 </section>
         
@@ -714,6 +726,10 @@
       <ul>
         
           <li>
+            <a href="/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/">第九天打卡</a>
+          </li>
+        
+          <li>
             <a href="/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/">第八天打卡</a>
           </li>
         
@@ -727,10 +743,6 @@
         
           <li>
             <a href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第五天打卡</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/">第四天打卡</a>
           </li>
         
       </ul>
