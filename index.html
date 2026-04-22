@@ -64,12 +64,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -77,6 +77,66 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-第十天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/22/%E7%AC%AC%E5%8D%81%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-22T10:59:57.395Z" itemprop="datePublished">2026-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/22/%E7%AC%AC%E5%8D%81%E5%A4%A9%E6%89%93%E5%8D%A1/">第十天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fc2FByE4f/">哔哩哔哩视频讲解链接</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个 <strong>非严格递增排列</strong> 的整数数组 <code>nums</code> ，请你 <strong>原地</strong> 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong> 。</p>
+<p>由于在某些语言中不能改变数组的长度，所以你必须 <strong>原地修改输入数组</strong> 并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,2]</span><br><span class="line">输出：2, nums = [1,2,_]</span><br><span class="line">解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [0,0,1,1,1,2,2,3,3,4]</span><br><span class="line">输出：5, nums = [0,1,2,3,4,_,_,_,_,_]</span><br><span class="line">解释：函数应该返回新的长度 5 ，并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>由于数组已经是有序的，我们可以使用双指针技巧来解决这个问题。</p>
+<ul>
+<li>使用一个指针 <code>cnt</code> 来记录不重复元素的个数，初始为1（第一个元素肯定不重复）。</li>
+<li>使用另一个变量 <code>k</code> 来记录当前已经记录的元素值，初始为 <code>nums[0]</code>。</li>
+<li>遍历数组从第二个元素开始，如果当前元素 <code>nums[i]</code> 不等于 <code>k</code>，说明这是一个新的不重复元素，我们将其放到 <code>cnt</code> 位置，并更新 <code>k</code> 的值为当前元素。</li>
+</ul>
+<p>这样，最终 <code>cnt</code> 的值就是不重复元素的个数，同时数组的前 <code>cnt</code> 个元素就是不重复的元素。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">1</span>, k = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] != k) &#123;</span><br><span class="line">            nums[cnt++] = nums[i];</span><br><span class="line">            k = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><ul>
+<li>时间复杂度：O(n)，其中 n 是数组的长度。我们只需要遍历一次数组。</li>
+<li>空间复杂度：O(1)，我们只使用了常数个变量，没有额外的空间。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/22/%E7%AC%AC%E5%8D%81%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidzboehqjF-woUH_hFXDQRG" data-title="第十天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-第九天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -126,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid4wGn4z7gmW3t_fMGS-0yQ" data-title="第九天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid4wGn4z7gmW3t_fMGS-0yQ" data-title="第九天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -199,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidCT2P_IzRiuHMXt1WwzLlD" data-title="第八天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/20/%E7%AC%AC%E5%85%AB%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidCT2P_IzRiuHMXt1WwzLlD" data-title="第八天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -255,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid_9y-gBddRWIGy0S-q6FV_" data-title="第七天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid_9y-gBddRWIGy0S-q6FV_" data-title="第七天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -318,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/18/%E7%AC%AC%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid5sOfwWdc65tjYJmyw5ZWN" data-title="第六天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/18/%E7%AC%AC%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid5sOfwWdc65tjYJmyw5ZWN" data-title="第六天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -373,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidJYoT2VdaWi3UYke_LfrYK" data-title="第五天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidJYoT2VdaWi3UYke_LfrYK" data-title="第五天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -431,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuide1fFRnyz90hjs8ppp00my" data-title="第四天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/16/%E7%AC%AC%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuide1fFRnyz90hjs8ppp00my" data-title="第四天打卡" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -490,7 +550,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidwnFxh0OkH2rXoR9hMp_Pa" data-title="第三天打卡 - 滑动窗口" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/15/%E7%AC%AC%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidwnFxh0OkH2rXoR9hMp_Pa" data-title="第三天打卡 - 滑动窗口" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -535,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/14/%E7%AC%AC%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid8tkT587xvqzbmAOA5yGKU" data-title="第二天打卡-双指针" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -605,82 +665,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidmWWgt4xMpMXZcTbWdCsZh" data-title="第一天打卡 - 二分查找" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-markdown基础语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2026-04-12T15:06:00.327Z" itemprop="datePublished">2026-04-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">markdown基础语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>1.末尾双空格换行才是真的换行</p>
-<p>2.敲两次回车,当是会空一行</p>
-<h2 id="换段"><a href="#换段" class="headerlink" title="换段"></a>换段</h2><p>连续换两行</p>
-<h2 id="文本加粗"><a href="#文本加粗" class="headerlink" title="文本加粗"></a>文本加粗</h2><p>在要加粗的文本前后加上两个星号或者下划线<br><strong>加粗文本</strong><br><strong>加粗文本2</strong></p>
-<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>在要斜体的文本前后加上一个星号或者下划线<br><em>斜体文本</em><br><em>斜体文本2</em></p>
-<h2 id="斜体并加粗"><a href="#斜体并加粗" class="headerlink" title="斜体并加粗"></a>斜体并加粗</h2><p>在要斜体加粗的文本前后加上三个星号或者下划线<br><em><strong>斜体加粗文本</strong></em><br><em><strong>斜体加粗文本2</strong></em></p>
-<h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><ul>
-<li>1.星号空一格 </li>
-<li>加号,星号,减号不能混着用</li>
-</ul>
-<ul>
-<li>2.加号空一格</li>
-</ul>
-<ul>
-<li>3.减号空一格</li>
-</ul>
-<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><ol>
-<li>1,2,3往下写</li>
-<li>有顺序的</li>
-<li>要空一格</li>
-<li>第一项可以自定义</li>
-</ol>
-<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><ul>
-<li>[名字]后面接上(链接)</li>
-</ul>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><ol>
-<li>在每行代码前面加4个空格,且上下连空1行</li>
-</ol>
-<pre><code>public class Day01 { 
-    public static void main(String[] args) {
-        System.out.println(&quot; &quot;);
-}
-}
-</code></pre>
-<ol start="2">
-<li>&#96;上下连着打三个</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Day01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot; &quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/12/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" data-id="cuidZwDX_g7fNKHdR0nzwREXH" data-title="markdown基础语法" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="http://example.com/2026/04/13/%E7%AC%AC%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidmWWgt4xMpMXZcTbWdCsZh" data-title="第一天打卡 - 二分查找" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -696,7 +681,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Siguiente &raquo;</a>
   </nav>
 
 </section>
@@ -713,7 +698,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
     </div>
@@ -723,9 +708,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/04/22/%E7%AC%AC%E5%8D%81%E5%A4%A9%E6%89%93%E5%8D%A1/">第十天打卡</a>
+          </li>
         
           <li>
             <a href="/2026/04/21/%E7%AC%AC%E4%B9%9D%E5%A4%A9%E6%89%93%E5%8D%A1/">第九天打卡</a>
@@ -743,10 +732,6 @@
             <a href="/2026/04/18/%E7%AC%AC%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/">第六天打卡</a>
           </li>
         
-          <li>
-            <a href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第五天打卡</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -761,7 +746,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2026 站主<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
