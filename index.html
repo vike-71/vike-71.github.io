@@ -78,6 +78,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-第十五天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/27/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-27T01:58:04.946Z" itemprop="datePublished">2026-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/27/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第十五天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-string/">LeetCode 题目链接</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fV4y17748">哔哩哔哩视频讲解链接</a></li>
+</ul>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 <code>s</code> 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：s &#x3D; [“h”,”e”,”l”,”l”,”o”]</p>
+<p>输出：[“o”,”l”,”l”,”e”,”h”]</p>
+<p><strong>示例 2：</strong></p>
+<p>输入：s &#x3D; [“H”,”a”,”n”,”n”,”a”,”h”]</p>
+<p>输出：[“h”,”a”,”n”,”n”,”a”,”H”]</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这个问题要求原地反转字符串，不能使用额外空间。我们可以使用双指针法：一个指针从字符串开头开始，另一个从结尾开始，交换两个指针指向的字符，然后指针向中间移动，直到相遇。</p>
+<p>具体步骤：</p>
+<ol>
+<li><p>检查输入数组是否为空或长度小于等于1，如果是，直接返回。</p>
+</li>
+<li><p>初始化两个指针：i &#x3D; 0, j &#x3D; s.length - 1</p>
+</li>
+<li><p>当 i &lt; j 时，交换 s[i] 和 s[j]，然后 i++，j–</p>
+</li>
+</ol>
+<p>这种方法的时间复杂度是 O(n)，空间复杂度是 O(1)</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reverseString</span><span class="params">(<span class="type">char</span>[] s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="literal">null</span> || s.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">char</span> t;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>,j=s.length-<span class="number">1</span>;i&lt;j;i++,j--)&#123;</span><br><span class="line">            t=s[i];</span><br><span class="line">            s[i]=s[j];</span><br><span class="line">            s[j]=t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/27/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid1cZFeEWWosxrq1TYgMuLT" data-title="第十五天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-第十四天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/04/25/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
@@ -655,61 +718,6 @@
 
 
   
-    <article id="post-第五天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
-  <time class="dt-published" datetime="2026-04-17T07:40:35.304Z" itemprop="datePublished">2026-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第五天打卡</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-linked-list-elements/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18B4y1s7R9">哔哩哔哩视频讲解链接</a></p>
-<h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
-<li><em><strong>题目要求 :</strong></em> 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点，并返回 新的头节点 。  </li>
-<li><em><strong>思路 :</strong></em> 使用虚拟头节点  </li>
-<li><em><strong>变量定义 :</strong></em></li>
-<li>dummyHead : 表示虚拟头节点  </li>
-<li>cur : 表示当前节点  </li>
-<li><em><strong>解题思路 :</strong></em>  </li>
-<li>因为要删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点,所以需要一个虚拟头节点来处理头节点被删除的情况,所以dummyHead初始值为一个新的节点,且该节点的next指向head <code>ListNode dummyHead = new ListNode(-1,head);</code>  </li>
-<li>因为需要遍历链表来删除满足条件的节点,所以cur初始值为虚拟头节点 <code>ListNode cur = dummyHead;</code>  </li>
-<li>当cur的下一个节点不为空时,说明还有节点需要判断,所以循环条件为 <code>while(cur.next!=null)</code>  <ul>
-<li>如果cur的下一个节点的值等于val,说明需要删除该节点,所以将cur的下一个节点指向下一个节点的下一个节点 <code>cur.next = cur.next.next;</code>  </li>
-<li>如果cur的下一个节点的值不等于val,说明不需要删除该节点,所以将cur指向下一个节点 <code>cur = cur.next;</code>  </li>
-<li>最后返回虚拟头节点的下一个节点,即新的头节点 <code>return dummyHead.next;</code></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeElements</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>,head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(cur.next!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (cur.next.val == val)&#123;</span><br><span class="line">                cur.next = cur.next.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuidJYoT2VdaWi3UYke_LfrYK" data-title="第五天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -746,6 +754,10 @@
       <ul>
         
           <li>
+            <a href="/2026/04/27/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第十五天打卡</a>
+          </li>
+        
+          <li>
             <a href="/2026/04/25/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%A4%A9%E6%89%93%E5%8D%A1/">第十四天打卡</a>
           </li>
         
@@ -759,10 +771,6 @@
         
           <li>
             <a href="/2026/04/23/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/">第十一天打卡</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/22/%E7%AC%AC%E5%8D%81%E5%A4%A9%E6%89%93%E5%8D%A1/">第十天打卡</a>
           </li>
         
       </ul>
