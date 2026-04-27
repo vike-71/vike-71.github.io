@@ -78,6 +78,125 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-第七天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-19T05:12:33.090Z" itemprop="datePublished">2026-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/">第七天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1if4y1d7ob">哔哩哔哩视频讲解链接</a></p>
+<h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
+<li><em><strong>题目要求 :</strong></em> 给定一个链表的头节点 head，返回链表开始入环的第一个节点。如果链表无环，则返回null。  </li>
+<li><em><strong>变量定义 :</strong></em></li>
+<li>fast: 表示快指针</li>
+<li>slow: 表示慢指针</li>
+<li>index1: 表示从头节点开始的指针</li>
+<li>index2: 表示从相遇节点开始的指针</li>
+<li><em><strong>解题思路 :</strong></em></li>
+<li>因为需要判断链表是否有环,所以需要一个快指针和一个慢指针,快指针每次移动两步,慢指针每次移动一步,如果快指针和慢指针相遇了,说明链表有环,否则链表无环,且快指针比慢指针快(每次移动两步),只需判断快指针和快指针下一个位置是否为null所以循环条件为 <code>while (fast != null &amp;&amp; fast.next != null)</code>  <ul>
+<li>如果快指针和慢指针相遇了,说明链表有环,所以需要一个指针从头节点开始,一个指针从相遇节点开始,每次移动一步,直到两个指针相遇了,说明找到了链表开始入环的第一个节点,所以循环条件为 <code>while (index1 != index2)</code>  <ul>
+<li>如果快指针和慢指针没有相遇了,说明链表无环,所以返回null <code>return null;</code>  </li>
+<li>如果快指针和慢指针相遇了,说明链表有环,所以返回相遇节点 <code>return index1;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">detectCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            <span class="keyword">if</span> (fast == slow) &#123;</span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">index1</span> <span class="operator">=</span> head;</span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">index2</span> <span class="operator">=</span> fast;</span><br><span class="line">                <span class="keyword">while</span> (index1 != index2) &#123;</span><br><span class="line">                    index1 = index1.next;</span><br><span class="line">                    index2 = index2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> index1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/19/%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid_9y-gBddRWIGy0S-q6FV_" data-title="第七天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-第六天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/18/%E7%AC%AC%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-18T03:27:02.235Z" itemprop="datePublished">2026-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/18/%E7%AC%AC%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/">第六天打卡</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目相关链接"><a href="#题目相关链接" class="headerlink" title="题目相关链接"></a>题目相关链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">LeetCode题目链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nB4y1i7eL">哔哩哔哩视频讲解链接</a></p>
+<h2 id="LeetCode题目"><a href="#LeetCode题目" class="headerlink" title="LeetCode题目"></a>LeetCode题目</h2><ul>
+<li><em><strong>题目要求 :</strong></em> 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。</li>
+</ul>
+<h2 id="一-使用双指针"><a href="#一-使用双指针" class="headerlink" title="一.使用双指针"></a>一.使用双指针</h2><ul>
+<li><em><strong>变量定义 :</strong></em>  </li>
+<li>head: 表示当前位置                                               (变化: 1 -&gt; 2 -&gt; 3 -&gt; null)  </li>
+<li>pre:  当前位置的上一位置也是当前位置即将指向的下一位置(反转链表的指向)     (变化: null-&gt; 1 —&gt; 2 -&gt; 3)  </li>
+<li>next: 当前位置的下一位置也是当前位置即将被指向的上一位置(反转链表的指向)    (变化: null -&gt; 2 -&gt; 3-&gt; null)  </li>
+<li><em><strong>解题思路 :</strong></em>  </li>
+<li>因为需要反转链表,所以需要一个pre指针来指向当前节点的上一位置,因为当前节点的下一位置会被改变,所以需要一个next指针来指向当前节点的下一位置  </li>
+<li>当head不为空时,说明还有节点需要反转,所以循环条件为 <code>while(head!=null)</code>  </li>
+<li>在循环中,首先将next指针移到当前节点的下一位置 <code>next = head.next;</code>  </li>
+<li>然后将当前节点的下一位置指向pre指针指向的位置,即反转链表的指向 <code>head.next = pre;</code>  </li>
+<li>然后将pre指针移到当前节点,<code>pre = head;</code>  </li>
+<li>最后将head指针移到next指针指向的位置<code>head = next;</code>  </li>
+<li>当循环结束时,pre指针指向的就是反转后的链表的头节点,所以返回pre指针指向的位置 <code>return pre;</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">next</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">while</span>(head!=<span class="literal">null</span>)&#123;</span><br><span class="line">                next = head.next;</span><br><span class="line">                head.next = pre;</span><br><span class="line">                pre = head;</span><br><span class="line">                head = next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> pre;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二-使用递归"><a href="#二-使用递归" class="headerlink" title="二.使用递归"></a>二.使用递归</h2><ul>
+<li><em><strong>变量定义 :</strong></em>  </li>
+<li>cur: 表示当前节点              </li>
+<li>pre:  当前位置的上一位置也是当前位置即将指向的下一位置(反转链表的指向)   </li>
+<li>next: 当前位置的下一位置也是当前位置即将被指向的上一位置(反转链表的指向)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverse</span><span class="params">(ListNode cur, ListNode pre)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> pre;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">next</span> <span class="operator">=</span> cur.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        <span class="keyword">return</span> reverse(next,cur);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> reverse(head,<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/18/%E7%AC%AC%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/" data-id="cuid5sOfwWdc65tjYJmyw5ZWN" data-title="第六天打卡" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-第五天打卡" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/04/17/%E7%AC%AC%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/" class="article-date">
@@ -527,6 +646,14 @@
       <ul>
         
           <li>
+            <a href="/2026/04/27/%E7%AC%AC%E5%8D%81%E4%B8%83%E5%A4%A9%E6%89%93%E5%8D%A1/">第十七天打卡</a>
+          </li>
+        
+          <li>
+            <a href="/2026/04/27/%E7%AC%AC%E5%8D%81%E5%85%AD%E5%A4%A9%E6%89%93%E5%8D%A1/">第十六天打卡</a>
+          </li>
+        
+          <li>
             <a href="/2026/04/27/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%A4%A9%E6%89%93%E5%8D%A1/">第十五天打卡</a>
           </li>
         
@@ -536,14 +663,6 @@
         
           <li>
             <a href="/2026/04/25/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%A4%A9%E6%89%93%E5%8D%A1/">第十三天打卡</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/24/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%A4%A9%E6%89%93%E5%8D%A1/">第十二天打卡</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/23/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%A4%A9%E6%89%93%E5%8D%A1/">第十一天打卡</a>
           </li>
         
       </ul>
